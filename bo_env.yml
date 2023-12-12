@@ -1,4 +1,4 @@
-name: BO_env
+name: mobo_env
 channels:
   - anaconda
   - defaults
