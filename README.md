@@ -78,12 +78,3 @@ In order to get plots of the experiments run ```plot_function_eval.py```; all fi
 In case you want to plot more than one method together, provide a list of experiment paths as follow:
 
 ```python plot_function_eval.py --exp_paths experiments/exp_name_1 experiments/exp_name_2 experiments/exp_name_3```
-
-### Contact
-
-If you have any question, feel free to contact me:
-
-[Pierluigi Mansueto](https://webgol.dinfo.unifi.it/pierluigi-mansueto/)<br>
-Global Optimization Laboratory ([GOL](https://webgol.dinfo.unifi.it/))<br>
-University of Florence<br>
-Email: pierluigi dot mansueto at unifi dot it
