@@ -68,7 +68,7 @@ The execution results are saved in the ```experiments``` folder.
 
 <p align="center">
 <img src="readme_img/Rosenbrock_50_plot.png" alt="drawing" height="350"/>
-<img src="readme_img/Rosenbrock_50_plot.png" alt="drawing" height="350"/>
+<img src="readme_img/Levy_10_plot.png" alt="drawing" height="350"/>
 </p>
 
 In order to get plots of the experiments run ```plot_function_eval.py```; all figures will be created and saved in ```plots``` folder. An example of execution could be the following:
