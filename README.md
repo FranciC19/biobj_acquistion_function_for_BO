@@ -5,7 +5,7 @@
 ## A Bi-Objective Acquisition Function for Bayesian Global Optimization
 
 <p align="center">
-  <img height="350" src="readme_img/BiOBO_flow.pdf">
+  <img height="350" src="readme_img/BiOBO_flow_dark.png">
 </p>
 
 Implementation of the Bi-Objective Acquisition Function Algorithm proposed in
@@ -16,7 +16,7 @@ If you have used our code for research purposes, please cite the publication men
 For the sake of simplicity, we provide the Bibtex format:
 
 ```
-@Article{Lapucci2022,
+@Article{carciaghi2023,
     author={Carciaghi, Francesco and Magistri, Simone and Mansueto, Pierluigi and Schoen, Fabio},
     title={A memetic procedure for global multi-objective optimization},
     journal={Computational Optimization and Applications},
