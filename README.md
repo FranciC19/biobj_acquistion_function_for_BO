@@ -2,7 +2,7 @@
 [![license](https://img.shields.io/badge/license-apache_2.0-orange.svg)](https://opensource.org/licenses/Apache-2.0)
 [![DOI]()]()
 
-## A i-Objective Acquisition Function for Bayesian Global Optimization
+## A Bi-Objective Acquisition Function for Bayesian Global Optimization
 
 <p align="center">
   <img height="300" src="readme_img/BiOBO_flow_dark.png">
