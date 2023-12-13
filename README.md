@@ -5,7 +5,7 @@
 ## A Bi-Objective Acquisition Function for Bayesian Global Optimization
 
 <p align="center">
-  <img height="350" src="readme_img/BiOBO_flow_light.png">
+  <img height="350" src="readme_img/BiOBO_flow_dark.png">
 </p>
 
 Implementation of the Bi-Objective Acquisition Function Algorithm proposed in
