@@ -1,37 +1,26 @@
 [![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/downloads/release/python-3106/)
 [![license](https://img.shields.io/badge/license-apache_2.0-orange.svg)](https://opensource.org/licenses/Apache-2.0)
-[![DOI]()]()
 
-## A Bi-Objective Acquisition Function for Bayesian Global Optimization
+## A Bi-Objective Acquisition Function for Batch Bayesian Global Optimization
 
 <p align="center">
   <img height="300" src="readme_img/BiOBO_flow_dark.png">
 </p>
 
-Implementation of the Bi-Objective Acquisition Function Algorithm proposed in
+Implementation of the Bi-Objective Acquisition Function Methodology proposed in
 
-[Carciaghi, F., Magistri, S., Mansueto, P. & Schoen, F. A Bi-Objective Acquisition Function for Bayesian Global Optimization (2023).]()
+TODO
 
 If you have used our code for research purposes, please cite the publication mentioned above.
 For the sake of simplicity, we provide the Bibtex format:
 
 ```
-@Article{carciaghi2023,
-    author={Carciaghi, Francesco and Magistri, Simone and Mansueto, Pierluigi and Schoen, Fabio},
-    title={A memetic procedure for global multi-objective optimization},
-    journal={Computational Optimization and Applications},
-    year={2023},
-    month={Dec},
-    day={20},
-    issn={},
-    doi={},
-    url={}
-}
+TODO
 ```
 
 ### Installation
 
-In order to execute the code, you need an [Anaconda](https://www.anaconda.com/) environment. We provide YAML file in order to facilitate the installation of the latter.
+In order to execute the code, you need an [Anaconda](https://www.anaconda.com/) environment. We provide a YAML file in order to facilitate the installation of the latter.
 
 ##### For Linux user
 
