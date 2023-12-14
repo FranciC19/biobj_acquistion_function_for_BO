@@ -21,7 +21,7 @@ TODO
 ### Installation
 
 In order to execute the code, you need an [Anaconda](https://www.anaconda.com/) environment. We provide a YAML file in order to facilitate the installation of the latter.
-Open an Anaconda terminal in the project root folder and execute the following command.
+Open an Anaconda terminal in the project root folder and execute the following command. Note that the code was experimented in a computer with Ubuntu 22.04.
 
 ```
 conda env create -f env_install.yml
@@ -50,22 +50,15 @@ Given an Anaconda terminal opened in the root folder, an example of code executi
 
 The execution results are saved in the ```experiments``` folder. If the latter does not exist, it is created at the beginning of the code execution.
 
-### Plot results
+#### Plot results
 
-<p align="center">
-<img src="readme_img/Rosenbrock_50_plot.png" alt="drawing" height="350"/>
-<img src="readme_img/Levy_10_plot.png" alt="drawing" height="350"/>
-</p>
+In order to get plots of the results obtained by one code run, you can run ```plot_function_eval.py```: all figures will be created and saved in ```plots``` folder. 
+An example of terminal command could be the following:
 
-In order to get plots of the experiments results obtained by one methodology, you can run ```plot_function_eval.py```: all figures will be created and saved in ```plots``` folder. 
-An example of execution could be the following:
+```python plot_function_eval.py --exp_paths experiments/exp_name```
 
-```python plot_function_eval.py --exp_paths experiments/{METH_EXP_NAME}```
+In case you want to plot the results of more than one experiment together, you can provide a list of experiment paths as follows:
 
-where ```METH_EXP_NAME``` indicates the folder name contained in ```experiments```.
+```python plot_function_eval.py --exp_paths experiments/exp_name_1 experiments/exp_name_2 experiments/exp_name_3```
 
-In case you want to plot the results of more than one methodology together, you can provide a list of experiment paths as follows:
-
-```python plot_function_eval.py --exp_paths experiments/{METH_EXP_NAME_1} experiments/{METH_EXP_NAME_2} experiments/{METH_EXP_NAME_3}```
-
-in case you have run three different methodologies.
+in case you have run three different experiments.

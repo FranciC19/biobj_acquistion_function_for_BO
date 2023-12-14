@@ -99,7 +99,7 @@ if __name__ == "__main__":
                                         markersize=8)
 
             plot_per_dim[f][1].set(xlabel=r"Function Evaluations ($k$)", ylabel=r"$f^{\ best}_k$")
-            plt.title(f)
+            plt.title(f.split('_')[0] + r", $n = {}$".format(f.split('_')[1]))
             plt.legend()
             plt.tight_layout()
         plot_per_dim[f][0].savefig(os.path.join("plots", "{}_plot.pdf".format(f)), format="pdf")
