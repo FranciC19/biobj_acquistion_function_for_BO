@@ -32,8 +32,6 @@ conda env create -f env_install.yml
 * ```python v3.10.4```
 * ```botorch v0.8.1```
 * ```nsma v1.0.12```
-* ```scipy v1.7.3```
-* ```matplotlib v3.5.3```
 * ```tensorflow v2.11.0```
 * ```gurobipy v9.5.2```
 
