@@ -50,7 +50,7 @@ The execution results are saved in the ```experiments``` folder. If the latter d
 
 #### Plot results
 
-In order to get plots of the results obtained by one code run, you can run ```plot_function_eval.py```: all figures will be created and saved in ```plots``` folder. 
+In order to get plots of the results obtained by one code execution, you can run ```plot_function_eval.py```: all figures will be created and saved in ```plots``` folder. 
 An example of terminal command could be the following:
 
 ```python plot_function_eval.py --exp_paths experiments/exp_name```
