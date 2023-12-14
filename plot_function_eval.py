@@ -98,8 +98,8 @@ if __name__ == "__main__":
             plot_per_dim[f][1].errorbar(x=range(iters), y=mean_list_of_f, yerr=confidence_interval_of_f, label=exp,
                                         markersize=8)
 
-            plot_per_dim[f][1].set(xlabel="Function evaluations", ylabel="BOF")
+            plot_per_dim[f][1].set(xlabel=r"Function Evaluations ($k$)", ylabel=r"$f^{\ best}_k$")
             plt.title(f)
             plt.legend()
             plt.tight_layout()
-        plot_per_dim[f][0].savefig(os.path.join("plots", "{}_plot.png".format(f)))
+        plot_per_dim[f][0].savefig(os.path.join("plots", "{}_plot.pdf".format(f)), format="pdf")

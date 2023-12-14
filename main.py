@@ -28,8 +28,8 @@ if __name__ == '__main__':
     folder_exp = args.exp_name + "-" + date
 
     # Create Result Folder if it does not exists
-    if not os.path.exists("./experiments"):
-        os.mkdir("./experiments")
+    if not os.path.exists("experiments"):
+        os.mkdir("experiments")
 
     pickle_folder_initialization(folder_exp)
 

@@ -1,4 +1,4 @@
-name: mobo_env
+name: bobaf_env
 channels:
   - anaconda
   - defaults
@@ -159,9 +159,9 @@ dependencies:
     - terminado==0.17.1
     - threadpoolctl==3.1.0
     - tinycss2==1.2.1
-    - torch==1.13.1+cu116
-    - torchaudio==0.13.1+cu116
-    - torchvision==0.14.1+cu116
+    - torch==1.13.1
+    - torchaudio==0.13.1
+    - torchvision==0.14.1
     - tornado==6.2
     - tqdm==4.64.1
     - traitlets==5.9.0
@@ -176,4 +176,3 @@ dependencies:
     - werkzeug==2.2.3
     - widgetsnbextension==4.0.5
     - wrapt==1.15.0
-prefix: /home/carciaghi/miniconda3/envs/BO_env

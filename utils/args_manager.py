@@ -12,11 +12,11 @@ def get_args():
 
     parser.add_argument('-acq_m', '--acquisition_methods', help='choose the methods to use to generate new points',
                         default='nsma', type=str, choices=['qei', 'qucb', 'nsma', 'nsgaii'])
-    parser.add_argument('--seeds', help='choose the list of seeds for the experiments', nargs='+', default=[16007, 2, 64, 3928, 1536, 42, 300, 6, 18, 101, 9741, 2023, 9050, 13, 4333, 777, 8924, 812, 21743, 42938],
+    parser.add_argument('--seeds', help='choose the list of seeds for the experiments', nargs='+', default=[42],
                         type=int)
     parser.add_argument('--n_initial_points', help='the number of initial point to start the BO loop', default=10,
                         type=int)
-    parser.add_argument('--noise', default=0.01, type=float, help="noise level of single task GP")
+    parser.add_argument('--noise', default=0.01, type=float, help="noise level of single task GP") # for numerical stability
     parser.add_argument('--clustering_type', default="X", type=str, choices=["X", "F"],
                         help="NSMA/NSGA clustering type to perform")
     parser.add_argument('--exp_name', type=str, default="", help="name of the experiment")
