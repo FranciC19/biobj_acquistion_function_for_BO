@@ -6,7 +6,7 @@
 <p align="center">
   <img height="300" src="readme_img/BiOBO_flow_dark.png">
 </p>
-
+ 
 Implementation of the Bi-Objective Acquisition Function Methodology proposed in
 
 TODO
