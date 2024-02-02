@@ -9,13 +9,21 @@
  
 Implementation of the Bi-Objective Acquisition Function Methodology proposed in
 
-TODO
+[Carciaghi, F., Magistri, S., Mansueto, P. & Schoen F., A Bi-Objective Optimization Based Acquisition Strategy for Batch Bayesian Global Optimization. arXiv Pre-Print (2024).](
+https://doi.org/10.48550/arXiv.2402.00726)
 
 If you have used our code for research purposes, please cite the publication mentioned above.
 For the sake of simplicity, we provide the Bibtex format:
 
 ```
-TODO
+@misc{carciaghi2024biobjective,
+      title={A Bi-Objective Optimization Based Acquisition Strategy for Batch Bayesian Global Optimization}, 
+      author={Francesco Carciaghi and Simone Magistri and Pierluigi Mansueto and Fabio Schoen},
+      year={2024},
+      eprint={2402.00726},
+      archivePrefix={arXiv},
+      primaryClass={math.OC}
+}
 ```
 
 ### Installation
