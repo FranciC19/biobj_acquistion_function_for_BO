@@ -6,7 +6,7 @@ from utils.args_manager import DEVICE, TORCH_TYPE
 
 class Rastrigin(Function):
 
-    def __init__(self, x_size):
+    def __init__(self, x_size: int):
         Function.__init__(self)
 
         self._obj_f = rastrigin(dim=x_size, noise_std=None, negate=True, bounds=None)

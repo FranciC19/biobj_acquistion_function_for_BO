@@ -1,14 +1,10 @@
 import pickle
 import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-import tensorflow as tf
-tf.compat.v1.disable_eager_execution()
 import random
 import numpy as np
 import torch
+from joblib import Parallel, delayed
 from datetime import datetime
-import warnings
-warnings.filterwarnings("ignore")
 
 from utils.utilities import pickle_folder_initialization
 from utils.args_manager import get_args, args_preprocessing
@@ -20,8 +16,7 @@ if __name__ == '__main__':
 
     # Get Command Line Argumrents
     args = get_args()
-    acq_m, seeds, n_initial_points, n_batch, batch_size, \
-        noise, max_it_na, clustering_type, ucb_beta, function_name = args_preprocessing(args)
+    acq_m, seeds, parallel_mode, n_initial_points, n_batch, batch_size, noise, max_it, selection_type, ucb_beta, function_name, verbose = args_preprocessing(args)
 
     date = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
 
@@ -50,7 +45,8 @@ if __name__ == '__main__':
 
     for function in function_to_evaluate:
 
-        print()
+        if verbose:
+            print()
 
         for dim in DIM[function.name()]:
 
@@ -69,37 +65,60 @@ if __name__ == '__main__':
 
             # Run Method
 
-            for k, seed in enumerate(seeds):
-                print('\n Function: {}, Dim:{},  Method {}, Seed {}/{}, Current Seed {}'.format(function.name(), dim,
-                                                                                                acq_m, k + 1,
-                                                                                                len(seeds), seed))
-                print("-----------------------------------------------")
-                history, current_x = run_seed(seed, fun, n_initial_points, acq_m, n_batch, batch_size, noise,
-                                   max_it_na, clustering_type,
-                                   ucb_beta)
-                # negative sign to perform the plots 
-                history = [-h for h in history]
-                best_observed_history.append(history)
-                new_opt_x_history.append(current_x)
-                
-                print("-----------------------------------------------")
+            if not parallel_mode:
+                for k, seed in enumerate(seeds):
+                    
+                    if verbose:
+                        print('\n Function: {}, Dim: {}, Method: {}, Seed: {}/{}, Current Seed: {}'.format(
+                            function.name(), dim,
+                            acq_m, k + 1,
+                            len(seeds), seed
+                        ))
+                        print("-----------------------------------------------")
 
-            if acq_m == "nsma" or acq_m == "nsgaii":
-                current_exp_name = '_'.join([function.name(), str(dim), acq_m + "(" + args.clustering_type + ")"])
+                    history, current_x = run_seed(
+                        seed, fun, n_initial_points, acq_m, n_batch, batch_size, 
+                        noise, max_it, selection_type, ucb_beta, verbose
+                    )
+                    # negative sign to perform the plots 
+                    history = [-h for h in history]
+                    best_observed_history.append(history)
+                    new_opt_x_history.append(current_x)
+                    
+                    if verbose:
+                        print("-----------------------------------------------")
+            else:
+                if verbose:
+                    print('\n Function: {}, Dim: {}, Method: {}'.format(
+                        function.name(), dim, acq_m
+                    ))
+                    print("-----------------------------------------------")
+
+                res = Parallel(n_jobs=-1)(delayed(run_seed)(
+                    seed, fun, n_initial_points, acq_m, n_batch, batch_size, 
+                    noise, max_it, selection_type, ucb_beta, verbose
+                ) for seed in seeds)
+                for k, _ in enumerate(seeds):
+                    best_observed_history.append([-h for h in res[k][0]])
+                    new_opt_x_history.append(res[k][1])
+
+                if verbose:
+                    print("-----------------------------------------------")
+
+            if acq_m in ['nsma', 'nsgaii']:
+                current_exp_name = '_'.join([function.name(), str(dim), acq_m + "(" + args.selection_type + ")"])
 
             else:
                 current_exp_name = '_'.join([function.name(), str(dim), acq_m])
 
             pickle_folder_initialization(folder_exp, current_exp_name)
 
-            dict_to_export = {'obj_f': fun.name(), 'dim': fun.dim(), 'global_obj_val': fun.best_obj_f,
-                              'acquisition_methods': acq_m, 'n_batch': n_batch, 'batch_size': batch_size,
-                              'best_observed_history': best_observed_history,
-                              'new_opt_x_history': new_opt_x_history}
+            dict_to_export = {
+                'obj_f': fun.name(), 'dim': fun.dim(), 'global_obj_val': -fun.best_obj_f,
+                'acquisition_method': acq_m, 'n_batch': n_batch, 'batch_size': batch_size,
+                'best_observed_history': best_observed_history, 'new_opt_x_history': new_opt_x_history
+            }
 
-            out_file_pickle = open(os.path.join('experiments',
-                                                folder_exp,
-                                                current_exp_name,
-                                                'results.pkl'), 'wb')
+            out_file_pickle = open(os.path.join('experiments', folder_exp, current_exp_name, 'results.pkl'), 'wb')
             pickle.dump(dict_to_export, out_file_pickle)
             out_file_pickle.close()

@@ -7,7 +7,7 @@ from utils.args_manager import DEVICE, TORCH_TYPE
 
 class Bukin(Function):
 
-    def __init__(self, x_size):
+    def __init__(self, x_size: int):
         assert x_size == 2
 
         Function.__init__(self)

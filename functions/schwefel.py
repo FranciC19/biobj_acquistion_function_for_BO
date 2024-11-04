@@ -16,13 +16,13 @@ class schwefel(SyntheticTestFunction):
             noise_std: Optional[float] = None,
             negate: bool = False,
             bounds: Optional[List[Tuple[float, float]]] = None,
-    ) -> None:
+    ):
         self.dim = dim
         self._bounds = [(-500, 500) for _ in range(self.dim)]
         self._optimizers = [tuple(420.9687 for _ in range(self.dim))]
         super().__init__(noise_std=noise_std, negate=negate, bounds=bounds)
 
-    def evaluate_true(self, X: torch.Tensor) -> torch.Tensor:
+    def evaluate_true(self, X: torch.Tensor):
         expr_1 = torch.mul(418.9829, self.dim)
         expr_2 = torch.mul(X, torch.sin(torch.sqrt(torch.abs(X))))
         return expr_1 - torch.sum(expr_2, dim=1)
@@ -30,7 +30,7 @@ class schwefel(SyntheticTestFunction):
 
 class Schwefel(Function):
 
-    def __init__(self, x_size):
+    def __init__(self, x_size: int):
         Function.__init__(self)
 
         self._obj_f = schwefel(dim=x_size, noise_std=None, negate=True, bounds=None)

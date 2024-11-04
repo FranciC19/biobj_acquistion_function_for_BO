@@ -14,21 +14,23 @@ from functions.bukin import Bukin
 from functions.holdertable import HolderTable
 from functions.styblinskitang import StyblinskiTang
 
-FUNCTIONS = {'Rastrigin': Rastrigin,
-             'Hartmann': Hartmann,
-             'EggHolder': EggHolder,
-             'Rosenbrock': Rosenbrock,
-             'Ackley': Ackley,
-             'Alpine01': Alpine01,
-             'Branin': Branin,
-             'Schwefel': Schwefel,
-             'Levy': Levy,
-             'Shekel': Shekel,
-             "Michalewicz": Michalewicz,
-             "SixHumpCamel": SixHumpCamel,
-             "Bukin": Bukin,
-             "HolderTable": HolderTable,
-             "StyblinskiTang": StyblinskiTang}
+FUNCTIONS = {
+    'Rastrigin': Rastrigin,
+    'Hartmann': Hartmann,
+    'EggHolder': EggHolder,
+    'Rosenbrock': Rosenbrock,
+    'Ackley': Ackley,
+    'Alpine01': Alpine01,
+    'Branin': Branin,
+    'Schwefel': Schwefel,
+    'Levy': Levy,
+    'Shekel': Shekel,
+    "Michalewicz": Michalewicz,
+    "SixHumpCamel": SixHumpCamel,
+    "Bukin": Bukin,
+    "HolderTable": HolderTable,
+    "StyblinskiTang": StyblinskiTang
+}
 
 DIM = {
     'Rastrigin': [2, 4, 10, 20, 50, 100],

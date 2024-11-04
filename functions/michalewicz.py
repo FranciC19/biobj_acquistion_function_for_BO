@@ -7,7 +7,7 @@ from utils.args_manager import DEVICE, TORCH_TYPE
 
 class Michalewicz(Function):
 
-    def __init__(self, x_size):
+    def __init__(self, x_size: int):
         assert x_size in [2, 5, 10]
 
         Function.__init__(self)

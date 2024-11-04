@@ -1,7 +1,7 @@
 import os
 
 
-def make_folder(folder_path):
+def make_folder(folder_path: str):
     if not os.path.exists(folder_path):
         os.mkdir(folder_path)
 

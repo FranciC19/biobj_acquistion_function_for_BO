@@ -6,7 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def get_optimum(func_name, size):
+def get_optimum(func_name: str, size: int):
     if func_name == "Ackley":
         optimum = 0.0
     elif func_name == "Alpine01":
@@ -95,11 +95,11 @@ if __name__ == "__main__":
             mean_list_of_f = np.mean(exp_dict[exp][f], axis=0)
             confidence_interval_of_f = 1.96 * np.std(exp_dict[exp][f], axis=0) / np.sqrt(exp_dict[exp][f].shape[0])
 
-            plot_per_dim[f][1].errorbar(x=range(iters), y=mean_list_of_f, yerr=confidence_interval_of_f, label=exp,
-                                        markersize=8)
+            plot_per_dim[f][1].errorbar(x=range(iters), y=mean_list_of_f, yerr=confidence_interval_of_f, label=exp, markersize=8)
 
             plot_per_dim[f][1].set(xlabel=r"Function Evaluations ($k$)", ylabel=r"$f^{\ best}_k$")
             plt.title(f.split('_')[0] + r", $n = {}$".format(f.split('_')[1]))
             plt.legend()
             plt.tight_layout()
+            
         plot_per_dim[f][0].savefig(os.path.join("plots", "{}_plot.pdf".format(f)), format="pdf")

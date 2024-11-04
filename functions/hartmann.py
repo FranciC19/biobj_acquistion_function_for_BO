@@ -7,7 +7,7 @@ from utils.args_manager import DEVICE, TORCH_TYPE
 
 class Hartmann(Function):
 
-    def __init__(self, x_size):
+    def __init__(self, x_size: int):
         assert x_size in [3, 6]
 
         Function.__init__(self)

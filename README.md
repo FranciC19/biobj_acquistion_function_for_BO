@@ -4,7 +4,7 @@
 ## A Bi-Objective Acquisition Function for Batch Bayesian Global Optimization
 
 <p align="center">
-  <img height="300" src="readme_img/BiOBO_flow_light.png">
+  <img height="300" src="readme_img/BiOBO_flow_dark.png">
 </p>
  
 Implementation of the Bi-Objective Acquisition Function Methodology proposed in
@@ -52,7 +52,7 @@ In order to run some parts of the code, the [Gurobi](https://www.gurobi.com/) Op
 In ```utils/args_manager.py``` you can find all the possible arguments.
 Given an Anaconda terminal opened in the root folder, an example of code execution could be the following:
 
-```python -u main.py -acq_m nsma --n_batch 20 --batch_size 3 --clustering_type X  --exp_name exp_name --function_name Rastrigin```
+```python -u main.py -acq_m nsma --n_batch 20 --batch_size 3 --selection_type X  --exp_name exp_name --function_name Rastrigin```
 
 The execution results are saved in the ```experiments``` folder. If the latter does not exist, it is created at the beginning of the code execution.
 

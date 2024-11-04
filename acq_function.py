@@ -1,13 +1,18 @@
 import torch
 import numpy as np
 from botorch.acquisition.monte_carlo import qExpectedImprovement, qUpperConfidenceBound
+from botorch.acquisition.logei import qLogExpectedImprovement
 from botorch.optim import optimize_acqf
 from botorch.utils.transforms import unnormalize
+from botorch.models.gp_regression import SingleTaskGP
+from botorch.sampling.normal import SobolQMCNormalSampler
+
+from functions.function import Function
 
 
 class AcqFunction:
 
-    def __init__(self, acq_name, model, fun, train_obj, qmc_sampler, ucb_beta=None, normalized_fun=True):
+    def __init__(self, acq_name: str, model: SingleTaskGP, fun: Function, train_obj: torch.Tensor, qmc_sampler: SobolQMCNormalSampler, ucb_beta: float = None, normalized_fun: bool = True):
 
         self.__acq_name = acq_name
 
@@ -15,6 +20,9 @@ class AcqFunction:
 
         if acq_name == 'qei':
             self.__acq_f = qExpectedImprovement(model=model, best_f=train_obj.max(), sampler=qmc_sampler)
+
+        elif acq_name == 'qlogei':
+            self.__acq_f = qLogExpectedImprovement(model=model, best_f=train_obj.max(), sampler=qmc_sampler)
 
         elif acq_name == 'qucb':
             self.__acq_f = qUpperConfidenceBound(model=model, beta=ucb_beta, sampler=qmc_sampler)
@@ -26,7 +34,7 @@ class AcqFunction:
 
         self.bounds = torch.tensor([np.zeros((fun.dim())), np.ones((fun.dim()))])
 
-    def optimize(self, train_x, batch_size):
+    def optimize(self, train_x: torch.Tensor, batch_size: int):
 
         try:
             candidates, _ = optimize_acqf(

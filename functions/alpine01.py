@@ -11,25 +11,25 @@ class alpine01(SyntheticTestFunction):
     _check_grad_at_opt: bool = False
 
     def __init__(
-            self,
-            dim: int = 2,
-            noise_std: Optional[float] = None,
-            negate: bool = False,
-            bounds: Optional[List[Tuple[float, float]]] = None,
-    ) -> None:
+        self,
+        dim: int = 2,
+        noise_std: Optional[float] = None,
+        negate: bool = False,
+        bounds: Optional[List[Tuple[float, float]]] = None,
+    ):
         self.dim = dim
         self._bounds = [(-10, 10) for _ in range(self.dim)]
         self._optimizers = [tuple(0.0 for _ in range(self.dim))]
         super().__init__(noise_std=noise_std, negate=negate, bounds=bounds)
 
-    def evaluate_true(self, X: torch.Tensor) -> torch.Tensor:
+    def evaluate_true(self, X: torch.Tensor):
         expr = torch.mul(X, torch.sin(X)) + torch.mul(X, 0.1)
         return torch.norm(expr, p=1, dim=-1)
 
 
 class Alpine01(Function):
 
-    def __init__(self, x_size):
+    def __init__(self, x_size: int):
         Function.__init__(self)
 
         self._obj_f = alpine01(dim=x_size, noise_std=None, negate=True, bounds=None)
